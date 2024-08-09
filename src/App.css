@@ -7,3 +7,18 @@
   color: white;
   
 }
+
+td {
+  border: 1px solid black;
+  padding: 2px 10px;
+}
+
+tbody td:nth-child(2):hover {
+  color: red;
+  cursor: pointer;
+}
+
+thead td {
+  background-color: rgba(128, 128, 128, 0.524);
+  color: white;
+}

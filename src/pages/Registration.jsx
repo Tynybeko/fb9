@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import intance from '../axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-export default function Auth() {
+export default function Registration() {
     const navigate = useNavigate()
     const [state, setState] = useState({
         isLoading: false,
@@ -18,7 +18,8 @@ export default function Auth() {
         e.preventDefault()
         setState(prev => ({ ...prev, 'isLoading': true }))
         try {
-            const response = await intance.post('/accounts/login/', loginData)
+            const response = await intance.post('/accounts/register/', loginData)
+            console.log(response);
             localStorage.setItem('token', response.data.token)
             navigate('/')
             setState(({ isError: false, 'isLoading': false }))
@@ -36,7 +37,7 @@ export default function Auth() {
                     className="mx-auto h-10 w-auto"
                 />
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                    Sign in to your account
+                    Registration
                 </h2>
             </div>
             {
@@ -50,10 +51,10 @@ export default function Auth() {
                         </label>
                         <div className="mt-2">
                             <input
-                                value={loginData.login}
+                                value={loginData.phone}
                                 onChange={handleChange}
                                 id="email"
-                                name="login"
+                                name="phone"
                                 type="tel"
                                 required
                                 autoComplete="email"
@@ -68,9 +69,9 @@ export default function Auth() {
                                 Password
                             </label>
                             <div className="text-sm">
-                                <Link to="/register" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                     Forgot password?
-                                </Link>
+                                </a>
                             </div>
                         </div>
                         <div className="mt-2">
@@ -93,12 +94,12 @@ export default function Auth() {
                             type="submit"
                             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            Sign in
+                            Registration
                         </button>
                     </div>
                 </form>
 
-               
+                
             </div>
         </div>
     )

@@ -18,21 +18,16 @@ const navBar = [
 ]
 
 export default function Header() {
-    
+
     return (
         <header className='flex p-2 bg-green-300 w-full justify-between'>
-            
-            Header
-
+            <h1>
+                Header
+            </h1>
             <nav className='flex gap-5 header_nav'>
                 {
                     navBar.map(item => (
-                        <NavLink className={({ isActive }) => {
-                            if (isActive) {
-                                return 'bg-red-500'
-                            }
-                            return 'bg-blue-500'
-                        }} to={item.href}>{item.title}</NavLink>
+                        <NavLink to={item.href}>{item.title}</NavLink>
                     ))
                 }
             </nav>
